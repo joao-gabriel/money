@@ -1,29 +1,44 @@
 ###################
-What is CodeIgniter
+What is this?
 ###################
 
-CodeIgniter is an Application Development Framework - a toolkit - for people
-who build web sites using PHP. Its goal is to enable you to develop projects
-much faster than you could if you were writing code from scratch, by providing
-a rich set of libraries for commonly needed tasks, as well as a simple
-interface and logical structure to access these libraries. CodeIgniter lets
-you creatively focus on your project by minimizing the amount of code needed
-for a given task.
+This is a simple work-in-progress money management web-app done by myself to practice some Codeingiter.
 
 *******************
 Release Information
 *******************
 
-This repo contains in-development code for future releases. To download the
-latest stable release please visit the `CodeIgniter Downloads
-<https://codeigniter.com/download>`_ page.
+ATTENTION:
+I needed to make a fix on Codeigniter in order to work with `Grocery CRUD <http://www.grocerycrud.com/>`_.
+It seems it will be fixed on next release. I'm using 3.1.3.
+Here's the fix:
+https://github.com/bcit-ci/CodeIgniter/pull/4975/commits/b9ac1a1c268dd6590bb8fb283f45326ce3e0c919
+
+I also needed to make changes to application/.htaccess and copy it to the project root directory in order to work without the "index.php" in the URLs.
+I erased all content from the file and put:
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /money
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
+</IfModule>
+
+I used this tool to create migration from the database I've created by hand:
+https://github.com/liaan/codeigniter_migration_base_generation
+
+So all you have to do to create de database is run codoigniter migration normally.
+If you don't know how to do it, this is a very good guide:
+http://developer-paradize.blogspot.com.br/2015/04/how-to-implement-database-migrations.html
 
 **************************
-Changelog and New Features
+TODO
 **************************
 
-You can find a list of all changes for each release in the `user
-guide change log <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/changelog.rst>`_.
+-  Interface Improvements
+-  Graph screen showing entries by categories and tags
+-  Login to protect data and allow more than one user per installation
+
 
 *******************
 Server Requirements
@@ -42,12 +57,7 @@ Installation
 Please see the `installation section <https://codeigniter.com/user_guide/installation/index.html>`_
 of the CodeIgniter User Guide.
 
-*******
-License
-*******
-
-Please see the `license
-agreement <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/license.rst>`_.
+And then copy the files from this repository to the same folder, overwriting files if asked.
 
 *********
 Resources
@@ -58,13 +68,7 @@ Resources
 -  `Community Forums <http://forum.codeigniter.com/>`_
 -  `Community Wiki <https://github.com/bcit-ci/CodeIgniter/wiki>`_
 -  `Community IRC <https://webchat.freenode.net/?channels=%23codeigniter>`_
+-  `Grocery CRUD <http://www.grocerycrud.com/>`_
 
 Report security issues to our `Security Panel <mailto:security@codeigniter.com>`_
 or via our `page on HackerOne <https://hackerone.com/codeigniter>`_, thank you.
-
-***************
-Acknowledgement
-***************
-
-The CodeIgniter team would like to thank EllisLab, all the
-contributors to the CodeIgniter project and you, the CodeIgniter user.

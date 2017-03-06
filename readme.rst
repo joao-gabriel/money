@@ -27,7 +27,7 @@ RewriteRule ^(.*)$ index.php/$1 [L]
 I used this tool to create migration from the database I've created by hand:
 https://github.com/liaan/codeigniter_migration_base_generation
 
-So all you have to do to create de database is run codoigniter migration normally.
+So all you have to do to create the database is run codeigniter migration normally.
 If you don't know how to do it, this is a very good guide:
 http://developer-paradize.blogspot.com.br/2015/04/how-to-implement-database-migrations.html
 
